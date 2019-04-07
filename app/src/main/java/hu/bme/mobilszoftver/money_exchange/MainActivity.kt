@@ -1,4 +1,4 @@
-package com.example.money_exchange
+package hu.bme.mobilszoftver.money_exchange
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

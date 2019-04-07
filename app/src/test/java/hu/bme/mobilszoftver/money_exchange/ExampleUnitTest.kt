@@ -1,4 +1,4 @@
-package com.example.money_exchange
+package hu.bme.mobilszoftver.money_exchange
 
 import org.junit.Test
 
