@@ -1,4 +1,6 @@
-package hu.bme.mobilszoftver.money_exchange.ui.currencies
+package hu.bme.mobilszoftver.money_exchange.ui.currency
 
-class CurrencyPresenter {
+import hu.bme.mobilszoftver.money_exchange.ui.Presenter
+
+class CurrencyPresenter: Presenter<CurrencyScreen>() {
 }

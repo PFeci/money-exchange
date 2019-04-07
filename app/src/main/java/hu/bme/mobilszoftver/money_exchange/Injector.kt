@@ -1,16 +1,9 @@
-package hu.bme.aut.android.kotifydemo
+package hu.bme.mobilszoftver.money_exchange
 
 import android.app.Activity
-import android.support.v4.app.Fragment
 
 
-val Activity.injector: KotifyDemoApplicationComponent
+val Activity.injector: MoneyExchangeApplicationComponent
     get() {
-        return (this.applicationContext as KotifyDemoApplication).injector
+        return (this.applicationContext as MoneyExchangeApplication).injector
     }
-
-val Fragment.injector: KotifyDemoApplicationComponent
-    get() {
-        return (this.context!!.applicationContext as KotifyDemoApplication).injector
-    }
-

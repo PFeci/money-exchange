@@ -1,9 +1,9 @@
 package hu.bme.mobilszoftver.money_exchange.ui
 
-abstract class Presenter<S> {
-    protected var screen: S? = null
+abstract class Presenter<Screen> {
+    protected var screen: Screen? = null
 
-    open fun attachScreen(screen: S) {
+    open fun attachScreen(screen: Screen) {
         this.screen = screen
     }
 

@@ -1,6 +1,6 @@
-package hu.bme.mobilszoftver.money_exchange.ui.currencies
+package hu.bme.mobilszoftver.money_exchange.ui.currency
 
-interface CurrenciesScreen {
+interface CurrencyScreen {
 
     fun showAllCurrencies()
 }
