@@ -3,6 +3,7 @@ package hu.bme.mobilszoftver.money_exchange.ui
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import hu.bme.mobilszoftver.money_exchange.interactor.currency.CurrencyInteractor
 import hu.bme.mobilszoftver.money_exchange.ui.main.MainPresenter
 import javax.inject.Singleton
 
@@ -14,6 +15,6 @@ class UIModule(private val context: Context) {
 
     @Provides
     @Singleton
-    fun mainPresenter() = MainPresenter()
+    fun mainPresenter(currencyInteractor: CurrencyInteractor) = MainPresenter(currencyInteractor)
 
 }
