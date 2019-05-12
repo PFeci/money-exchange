@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">money-exchange</string>
+    <string name="currency_activity">currency_activity</string>
+    <string name="probe_button">probe_button</string>
+    <string name="list_item_name">list_item_name</string>
+    <string name="list_item_is_favourite">list_item_is_favourite</string>
+    <string name="home_button">Home</string>
+    <string name="all_currency">All Currency</string>
+    <string name="favourite_currencies">Favourite currencies</string>
+    <string name="list_item_country">list_item_country</string>
+    <string name="actual_price">actual_price</string>
+    <string name="list_item_actual_price">actual_price</string>
+    <string name="huf">HUF</string>
+    <string name="currencies">Currencies</string>
 </resources>

@@ -14,18 +14,11 @@ class MockNetworkModule {
 
     private val networkModule = NetworkModule()
 
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
-        return networkModule.provideOkHttpClient()
-    }
-
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(builder: OkHttpClient.Builder): OkHttpClient {
-        builder.interceptors().add(builder.interceptors().size, MockInterceptor())
-
-        return builder.build()
+        return OkHttpClient.Builder().addInterceptor(MockInterceptor()).build()
     }
 
     @Provides

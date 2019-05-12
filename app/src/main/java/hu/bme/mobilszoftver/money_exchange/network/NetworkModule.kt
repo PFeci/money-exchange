@@ -22,12 +22,6 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(builder: OkHttpClient.Builder): OkHttpClient {
-        return builder.build()
-    }
-
-    @Provides
-    @Singleton
     fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(NetworkConfig.SERVICE_ENDPOINT)

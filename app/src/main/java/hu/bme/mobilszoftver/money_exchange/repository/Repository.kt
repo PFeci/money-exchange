@@ -12,8 +12,8 @@ interface Repository {
 
     fun close()
 
-    fun addCurrency(stuff: Currency)
+    fun addCurrency(currency: Currency)
 
-    fun removeCurrency(stuff: Currency)
+    fun removeCurrency(currency: Currency)
 
 }
