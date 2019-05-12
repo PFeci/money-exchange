@@ -62,6 +62,7 @@ class CurrencyAdapter(private val context: Context,
         if (inputPrice == -1) {
             actualPriceTextView.text = currency.price.toString()
             nameTextView.text = "HUF"
+            countryTextView.text = currency.name
 
         } else if (inputPrice != 0) {
             actualPriceTextView.text = (inputPrice / currency.price).toString()

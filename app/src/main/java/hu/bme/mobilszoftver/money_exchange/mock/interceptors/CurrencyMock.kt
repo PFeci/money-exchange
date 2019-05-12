@@ -12,8 +12,9 @@ import okhttp3.Response
 object CurrencyMock {
 
     var currencList: MutableList<Currency> = mutableListOf(
-        Currency(1, 200f, "USD", "USA", true),
-        Currency(2, 300f, "EUR", "European Union", false)
+        Currency(1, 260.67f, "USD", "USA", true),
+        Currency(2, 320.1f, "EUR", "European Union", false),
+        Currency(3, 354.2f, "GBP", "Great Britain", false)
     )
 
     fun process(request: Request): Response {
