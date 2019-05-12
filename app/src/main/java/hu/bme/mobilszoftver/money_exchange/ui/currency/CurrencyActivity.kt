@@ -30,8 +30,10 @@ class CurrencyActivity: AppCompatActivity(), CurrencyScreen {
         listView = findViewById(R.id.currency_list_view)
 
         listView.setOnItemClickListener {
-                _,_,position,_ ->
+                _,_,position,_ -> run {
+            listItems[position].isFavourite = listItems[position].isFavourite.not()
             currencyPresenter.updateFavouriteList(listItems[position])
+            }
         }
     }
 

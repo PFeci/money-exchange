@@ -1,12 +1,12 @@
 package hu.bme.mobilszoftver.money_exchange.mock.interceptors
 
+import android.arch.persistence.room.TypeConverter
 import android.net.Uri
 import com.google.gson.Gson
-import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
 import hu.bme.mobilszoftver.money_exchange.model.Currency
 import hu.bme.mobilszoftver.money_exchange.network.NetworkConfig
 import okhttp3.Request
-import okhttp3.RequestBody
 import okhttp3.Response
 
 object CurrencyMock {
@@ -36,15 +36,16 @@ object CurrencyMock {
             val deleteCurrency: Currency = currencList.find {
                 currency -> id == currency.id.toString()
             } as Currency
-            deleteCurrency.isFavourite = deleteCurrency.isFavourite.not()
+            deleteCurrency.isFavourite = false
 
             responseString = Gson().toJson("Successful delete operation!")
             responseCode = 200
         } else if (pathWithoutId == NetworkConfig.ENDPOINT_PREFIX + "currency" && request.method() == "PUT") {
-            val updateCurrency = currencList.find {
+            val currency: Currency = stringToRecipe(request)
+            var updateCurrency = currencList.find {
                     currency -> id == currency.id.toString()
             } as Currency
-            updateCurrency.isFavourite = updateCurrency.isFavourite.not()
+            currencList.set(currencList.indexOf(updateCurrency), currency)
 
             responseString = Gson().toJson("Successful update operation!")
             responseCode = 200
@@ -57,4 +58,13 @@ object CurrencyMock {
         return MockHelper.makeResponse(request, headers, responseCode, responseString)
     }
 
+    @TypeConverter
+    private fun stringToRecipe(request: Request): Currency {
+        if (request.body() == null) {
+            return Currency()
+        }
+
+        val currencyType = object : TypeToken<Currency>() {}.type
+        return Gson().fromJson(MockHelper.bodyToString(request), currencyType)
+    }
 }

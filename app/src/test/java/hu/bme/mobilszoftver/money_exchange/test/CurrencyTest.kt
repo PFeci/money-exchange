@@ -19,7 +19,6 @@ class CurrencyTest {
     lateinit var currencyPresenter: CurrencyPresenter
 
     private lateinit var currencyScreen: CurrencyScreen
-    private lateinit var query: String
 
     @Before
     @Throws(Exception::class)
@@ -27,14 +26,23 @@ class CurrencyTest {
         testInjector.inject(this)
         currencyScreen = mock()
         currencyPresenter.attachScreen(currencyScreen)
+        currencyPresenter.updateFavouriteList(
+            Currency(1, 260.67f, "USD", "USA", true)
+        )
+        currencyPresenter.updateFavouriteList(
+            Currency(2, 320.1f, "EUR", "European Union", false)
+        )
+        currencyPresenter.updateFavouriteList(
+            Currency(3, 354.2f, "GBP", "Great Britain", false)
+        )
     }
 
     @Test
     fun testUpdate() {
-        val currency: Currency = Currency(3, 354.2f, "GBP", "Great Britain", false)
+        val currency: Currency = Currency(3, 354.2f, "GBP", "Great Britain", true)
         currencyPresenter.updateFavouriteList(currency)
         verify(currencyScreen).showAllCurrencies(mutableListOf(
-            Currency(1, 260.67f, "USD", "USA", false),
+            Currency(1, 260.67f, "USD", "USA", true),
             Currency(2, 320.1f, "EUR", "European Union", false),
             Currency(3, 354.2f, "GBP", "Great Britain", true)
         ))
@@ -42,7 +50,7 @@ class CurrencyTest {
 
     @Test
     fun testUpdate2() {
-        val currency: Currency = Currency(1, 354.2f, "GBP", "Great Britain", true)
+        val currency: Currency = Currency(1, 260.67f, "USD", "USA", false)
         currencyPresenter.updateFavouriteList(currency)
         verify(currencyScreen).showAllCurrencies(mutableListOf(
             Currency(1, 260.67f, "USD", "USA", false),
