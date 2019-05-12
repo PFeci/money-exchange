@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1031169104334",
+    "firebase_url": "https://currency-da750.firebaseio.com",
+    "project_id": "currency-da750",
+    "storage_bucket": "currency-da750.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031169104334:android:da45a74c09cfd531",
+        "android_client_info": {
+          "package_name": "hu.bme.mobilszoftver.money_exchange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031169104334-bsu98ptl494ifu8anbser67joqjat04h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDO1FxoFXzD4Ssyp5ienFhNkwTcsJbNaRA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031169104334-bsu98ptl494ifu8anbser67joqjat04h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

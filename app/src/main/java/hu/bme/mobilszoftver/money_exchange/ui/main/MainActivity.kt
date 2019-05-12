@@ -13,6 +13,8 @@ import hu.bme.mobilszoftver.money_exchange.model.Currency
 import hu.bme.mobilszoftver.money_exchange.ui.currency.CurrencyActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+import hu.bme.mobilszoftver.money_exchange.MoneyExchangeApplication
+import com.google.firebase.analytics.FirebaseAnalytics
 
 
 class MainActivity : AppCompatActivity(), MainScreen {
@@ -22,10 +24,18 @@ class MainActivity : AppCompatActivity(), MainScreen {
     private lateinit var listView: ListView
     private lateinit var listItems: ArrayList<Currency>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         injector.inject(this)
+
+        val application = application as MoneyExchangeApplication
+        //mTracker = application.getDefaultTracker()
+
+
+
+
 
         listView = findViewById(R.id.favourite_currency_list_view)
 
@@ -52,6 +62,7 @@ class MainActivity : AppCompatActivity(), MainScreen {
             }
         })
 
+
     }
 
     override fun onStart() {
@@ -59,6 +70,15 @@ class MainActivity : AppCompatActivity(), MainScreen {
         mainPresenter.attachScreen(this)
         mainPresenter.showFavouriteCurrenciesList()
         updateActualPrices()
+
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "MainActivity has been started!")
+        val application = application as MoneyExchangeApplication
+        application.getFirebase().logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle)
+
+        //mTracker.setScreenName("MainActivity")
+        //mTracker.send(HitBuilders.ScreenViewBuilder().build())
+
     }
 
     override fun onStop() {
