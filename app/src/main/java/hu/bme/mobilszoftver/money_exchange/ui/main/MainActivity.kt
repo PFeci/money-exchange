@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 import hu.bme.mobilszoftver.money_exchange.MoneyExchangeApplication
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
+import android.view.View
 
 
 class MainActivity : AppCompatActivity(), MainScreen {
@@ -29,12 +32,6 @@ class MainActivity : AppCompatActivity(), MainScreen {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         injector.inject(this)
-
-        val application = application as MoneyExchangeApplication
-        //mTracker = application.getDefaultTracker()
-
-
-
 
 
         listView = findViewById(R.id.favourite_currency_list_view)
@@ -62,6 +59,11 @@ class MainActivity : AppCompatActivity(), MainScreen {
             }
         })
 
+        Fabric.with(this, Crashlytics())
+
+        crash.setOnClickListener {
+            view -> forceCrash(view)
+        }
 
     }
 
@@ -115,6 +117,10 @@ class MainActivity : AppCompatActivity(), MainScreen {
 
         val adapter = CurrencyAdapter(this, listItems, actualValue)
         listView.adapter = adapter
+    }
+
+    fun forceCrash(view: View) {
+        throw RuntimeException("This is a crash")
     }
 
 }
